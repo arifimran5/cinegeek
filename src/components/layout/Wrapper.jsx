@@ -12,7 +12,7 @@ const Wrapper = ({ children }) => {
   return (
     <div className='bg-primary_dark text-primary_light'>
       <nav className='bg-accent px-4 sm:px-5 md:px-12 py-4 flex justify-between items-center'>
-        <NavLink to={'/'}>
+        <NavLink to={'/category/popular/1'}>
           <div className='text-2xl font-bold'>cinegeek</div>
         </NavLink>
         <div className='flex items-center space-x-3 md:space-x-6 text-sm sm:text-base'>

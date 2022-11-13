@@ -17,12 +17,12 @@ const routes = createBrowserRouter([
     element: <Root />,
     errorElement: <NotFound />,
     children: [
-      {
-        index: true,
-        element: <List />,
-        loader: listLoader,
-        action: listAction,
-      },
+      // {
+      //   index: true,
+      //   element: <Root />,
+      //   loader: listLoader,
+      //   action: listAction,
+      // },
       {
         path: '/category/:id/:page',
         element: <List />,
