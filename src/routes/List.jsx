@@ -58,6 +58,7 @@ const List = () => {
     if (!category || !page) {
       navigate('/?category=popular&page=1');
     }
+    window.scrollTo(0, 0);
   }, [searchParams]);
 
   const handleNextPage = () => {
