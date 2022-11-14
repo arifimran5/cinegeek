@@ -10,42 +10,35 @@ const MovieList = ({ data }) => {
             key={movie.id}
             className='w-[70%] sm:w-full'
           >
-            <div className='bg-secondary_dark  rounded-lg shadow-lg overflow-hidden relative cursor-pointer'>
-              {!movie.poster_path && (
-                <img
-                  className='h-full'
-                  src='https://via.placeholder.com/300.png/?text=%22Not%20found%22'
-                  alt='Not found'
-                />
-              )}
-              {movie.poster_path && (
-                <picture>
-                  <source
-                    srcSet={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    media='(min-width: 640px)'
-                    className='w-full object-cover object-center '
-                  />
+            <article className='p-4 bg-gradient-to-b from-gray-50/10 to-accent/30 rounded-lg'>
+              <div className='shadow-lg overflow-hidden cursor-pointer'>
+                {!movie.poster_path && (
                   <img
-                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                    alt={movie.title}
-                    className='w-full h-full object-cover hover:scale-105 transition-transform duration-200 ease-out'
+                    className='h-full'
+                    src='https://via.placeholder.com/300.png/?text=%22Not%20found%22'
+                    alt='Not found'
                   />
-                </picture>
-              )}
-              {/* <img
-                className='w-full object-cover object-center hover:scale-105 transition-transform duration-200 ease-out'
-                src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}
-                alt={movie.title}
-              /> */}
-              <div className='backdrop-blur-[2px] w-full py-4 px-6 absolute bottom-0 left-0 bg-primary_dark/10'>
-                {/* <h2 className='tracking-widest text-xs title-font font-medium text-gray-50 mb-1'>
-              {movie.release_date}
-            </h2> */}
-                <h1 className='title-font text-lg font-bold text-primary_light '>
+                )}
+                {movie.poster_path && (
+                  <picture>
+                    <source
+                      srcSet={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      media='(min-width: 640px)'
+                    />
+                    <img
+                      src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                      alt={movie.title}
+                      className='w-full h-full md:min-h-[26em] rounded-lg object-cover hover:scale-105 transition-transform duration-200 ease-out'
+                    />
+                  </picture>
+                )}
+              </div>
+              <div className='w-full py-2 text-center '>
+                <h1 className='title-font text-sm font-bold text-primary_light '>
                   {movie.title}
                 </h1>
               </div>
-            </div>
+            </article>
           </Link>
         ))}
       </div>

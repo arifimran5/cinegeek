@@ -67,12 +67,16 @@ const List = () => {
     navigate(`/?category=${category}&page=${page * 1 - 1}`);
   };
 
+  if (category === 'now_playing') {
+    category = 'Now Playing';
+  }
+
   return (
     <div>
-      <h1 className='capitalize text-3xl sm:text-4xl font-bold my-5 sm:my-8 md:mt-12 lg:mt-16'>
+      <h1 className='capitalize text-2xl sm:text-3xl font-bold my-5 sm:my-8 md:mt-12 lg:mt-16'>
         {category} Movies
       </h1>
-      <MovieList data={data.results} />
+      <MovieList data={data.results} category={category} />
 
       <div className='flex justify-end items-center space-x-2 sm:space-x-6 pb-4 pt-6'>
         <button

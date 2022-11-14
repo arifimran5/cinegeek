@@ -7,8 +7,8 @@ module.exports = {
         primary_dark: '#262626',
         secondary_dark: '#303030',
 
-        accent: '#7551C1',
-        primary_light: '#f3f3f3',
+        accent: '#4C2998',
+        primary_light: '#f1f1f1',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

@@ -13,7 +13,9 @@ const Wrapper = ({ children }) => {
     <div className='bg-primary_dark text-primary_light'>
       <nav className='bg-accent px-4 sm:px-5 md:px-12 py-4 flex justify-between items-center'>
         <NavLink to={'/'}>
-          <div className='text-2xl font-bold'>cinegeek</div>
+          <div>
+            <img src='/logo.png' alt='Logo of cingeek' />
+          </div>
         </NavLink>
         <div className='flex items-center space-x-3 md:space-x-6 text-sm sm:text-base'>
           <div>
