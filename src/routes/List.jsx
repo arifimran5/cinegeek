@@ -78,10 +78,10 @@ const List = () => {
       </h1>
       <MovieList data={data.results} category={category} />
 
-      <div className='flex justify-end items-center space-x-2 sm:space-x-6 pb-4 pt-6'>
+      <div className='flex justify-end items-center space-x-2 sm:space-x-6 pb-4 pt-6 font-semibold '>
         <button
           onClick={handlePrevPage}
-          className={`px-5 py-2 bg-gray-100 text-primary_dark rounded-md ${
+          className={`px-5 py-2 bg-gray-100  text-primary_dark rounded-md ${
             page == 1 ? 'bg-gray-400 cursor-not-allowed' : ''
           } `}
           disabled={page == 1}
