@@ -9,7 +9,7 @@ import NotFound from './components/404';
 import List, {
   loader as listLoader,
   action as listAction,
-} from './routes/category/List';
+} from './routes/List';
 
 const routes = createBrowserRouter([
   {
@@ -17,17 +17,15 @@ const routes = createBrowserRouter([
     element: <Root />,
     errorElement: <NotFound />,
     children: [
-      // {
-      //   index: true,
-      //   element: <Root />,
-      //   loader: listLoader,
-      //   action: listAction,
-      // },
       {
-        path: '/category/:id/:page',
+        index: true,
         element: <List />,
         loader: listLoader,
         action: listAction,
+      },
+      {
+        path: 'movie/:id',
+        element: <h1>This is going to be single movie page</h1>,
       },
     ],
   },

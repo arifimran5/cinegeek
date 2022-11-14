@@ -2,17 +2,17 @@ import { NavLink } from 'react-router-dom';
 import Dropdown from '../Dropdown';
 
 const movieOptions = [
-  { title: 'Popular', link: '/category/popular/1' },
-  { title: 'Top Rated', link: '/category/top_rated/1' },
-  { title: 'Upcoming', link: '/category/upcoming/1' },
-  { title: 'Now Playing', link: '/category/now_playing/1' },
+  { title: 'Popular', link: '/?category=popular&page=1' },
+  { title: 'Top Rated', link: '/?category=top_rated&page=1' },
+  { title: 'Upcoming', link: '/?category=upcoming&page=1' },
+  { title: 'Now Playing', link: '/?category=now_playing&page=1' },
 ];
 
 const Wrapper = ({ children }) => {
   return (
     <div className='bg-primary_dark text-primary_light'>
       <nav className='bg-accent px-4 sm:px-5 md:px-12 py-4 flex justify-between items-center'>
-        <NavLink to={'/category/popular/1'}>
+        <NavLink to={'/'}>
           <div className='text-2xl font-bold'>cinegeek</div>
         </NavLink>
         <div className='flex items-center space-x-3 md:space-x-6 text-sm sm:text-base'>
