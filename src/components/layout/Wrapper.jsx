@@ -1,31 +1,11 @@
-import { NavLink } from 'react-router-dom';
-import Dropdown from '../Dropdown';
-
-const movieOptions = [
-  { title: 'Popular', link: '/?category=popular&page=1' },
-  { title: 'Top Rated', link: '/?category=top_rated&page=1' },
-  { title: 'Upcoming', link: '/?category=upcoming&page=1' },
-  { title: 'Now Playing', link: '/?category=now_playing&page=1' },
-];
+import SideBar from './SideBar';
 
 const Wrapper = ({ children }) => {
   return (
-    <div className='bg-primary_dark text-primary_light'>
-      <nav className='bg-accent px-4 sm:px-5 md:px-12 py-4 flex justify-between items-center'>
-        <NavLink to={'/'}>
-          <div>
-            <img src='/logo.png' alt='Logo of cingeek' />
-          </div>
-        </NavLink>
-        <div className='flex items-center space-x-3 md:space-x-6 text-sm sm:text-base'>
-          <div>
-            <Dropdown title='Movies' options={movieOptions} />
-          </div>
-          <div>TV Shows</div>
-        </div>
-      </nav>
+    <div className='bg-primary_dark text-primary_light flex gap-5'>
+      <SideBar />
 
-      <main className='max-w-6xl mx-auto min-h-screen px-4 md:px-12 xl:px-0'>
+      <main className='min-h-screen px-4 md:px-12 overflow-scroll'>
         {children}
       </main>
     </div>

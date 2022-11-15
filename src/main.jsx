@@ -12,6 +12,7 @@ import List, {
   loader as listLoader,
   action as listAction,
 } from './routes/List';
+import Movie, { loader as movieLoader } from './routes/Movie';
 
 const routes = createBrowserRouter([
   {
@@ -27,7 +28,8 @@ const routes = createBrowserRouter([
       },
       {
         path: 'movie/:id',
-        element: <h1>This is going to be single movie page</h1>,
+        element: <Movie />,
+        loader: movieLoader,
       },
     ],
   },

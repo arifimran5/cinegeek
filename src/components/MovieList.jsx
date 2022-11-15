@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 const MovieList = ({ data }) => {
   return (
     <section>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center '>
+      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-items-center '>
         {data.map((movie) => (
           <Link
             to={`/movie/${movie.id}`}
             key={movie.id}
             className='w-[70%] sm:w-full'
           >
-            <article className='p-4 bg-gradient-to-b from-gray-50/10 to-accent/30 rounded-lg'>
+            <article className='p-4 bg-gradient-to-b from-orange-200/20 to-accent/30 rounded-lg'>
               <div className='shadow-lg overflow-hidden cursor-pointer'>
                 {!movie.poster_path && (
                   <img
@@ -28,12 +28,12 @@ const MovieList = ({ data }) => {
                     <img
                       src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                       alt={movie.title}
-                      className='w-full h-full md:min-h-[26em] rounded-lg object-cover hover:scale-105 transition-transform duration-200 ease-out'
+                      className='rounded-lg object-cover hover:scale-105 transition-transform duration-200 ease-out'
                     />
                   </picture>
                 )}
               </div>
-              <div className='w-full py-2 text-center '>
+              <div className='w-full pt-4 text-center '>
                 <h1 className='title-font text-sm font-bold text-primary_light '>
                   {movie.title}
                 </h1>

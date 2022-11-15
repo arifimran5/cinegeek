@@ -70,13 +70,16 @@ const List = () => {
 
   if (category === 'now_playing') {
     category = 'Now Playing';
+  } else if (category === 'top_rated') {
+    category = 'Top Rated';
   }
 
   return (
     <div>
       <h1 className='capitalize text-2xl sm:text-3xl font-bold my-5 sm:my-8 md:mt-12 lg:mt-16'>
-        {category} Movies
+        {category} <span className='block font-light text-base'>Movies</span>
       </h1>
+
       <MovieList data={data.results} category={category} />
 
       <div className='flex justify-end items-center space-x-2 sm:space-x-6 pb-4 pt-6 font-semibold '>
