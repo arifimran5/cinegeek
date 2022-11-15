@@ -24,7 +24,7 @@ const movieOptions = [
   },
 ];
 
-const SideBar = () => {
+const SideBar = ({ isOpen, handleClose }) => {
   const [searchParams] = useSearchParams();
   let category = searchParams.get('category');
 
@@ -55,7 +55,14 @@ const SideBar = () => {
   }, []);
 
   return (
-    <aside className='bg-accent flex flex-col min-w-[15em] xl:min-w-[18em] min-h-screen h-max sticky top-0 overflow-hidden'>
+    <aside
+      className={`bg-accent flex flex-col min-w-[15em] xl:min-w-[18em] min-h-screen h-max sticky top-0 
+      ${
+        isOpen
+          ? 'max-h-screen overflow-y-scroll overflow-x-hidden'
+          : 'overflow-hidden'
+      } `}
+    >
       <div className='mx-auto my-12'>
         <NavLink to={'/'}>
           <div>
@@ -73,6 +80,7 @@ const SideBar = () => {
             // console.log(active);
             return (
               <NavLink
+                onClick={handleClose}
                 key={option.title}
                 to={option.link}
                 data-active={active}
@@ -93,6 +101,7 @@ const SideBar = () => {
               genres.map((genre) => {
                 return (
                   <NavLink
+                    onClick={handleClose}
                     key={genre.id}
                     to={`/genre/${genre.id}?page=1`}
                     className={`flex items-center gap-2 text-orange-300  py-1 px-6 hover:underline hover:rounded-2xl`}

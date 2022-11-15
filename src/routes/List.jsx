@@ -76,7 +76,7 @@ const List = () => {
 
   return (
     <div>
-      <h1 className='capitalize text-2xl sm:text-3xl font-bold my-5 sm:my-8 md:mt-12 lg:mt-16'>
+      <h1 className='capitalize text-2xl sm:text-3xl font-bold my-6 lg:mt-8'>
         {category} <span className='block font-light text-base'>Movies</span>
       </h1>
 
