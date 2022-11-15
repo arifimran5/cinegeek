@@ -64,7 +64,7 @@ const SideBar = ({ isOpen, handleClose }) => {
       } `}
     >
       <div className='mx-auto my-12'>
-        <NavLink to={'/'}>
+        <NavLink onClick={handleClose} to={'/'}>
           <div>
             <img src='/logo.png' alt='Logo of cingeek' />
           </div>
