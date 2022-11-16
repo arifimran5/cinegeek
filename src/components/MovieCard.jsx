@@ -5,7 +5,7 @@ import { IoIosStats } from 'react-icons/io';
 const MovieCard = ({ movie }) => {
   // console.log(movie);
   return (
-    <Link to={`/movie/?id=${movie.id}`} key={movie.id} className=''>
+    <Link to={`/movie?id=${movie.id}`} key={movie.id} className=''>
       <article className='p-4 bg-gradient-to-b from-orange-200/20 to-accent/30 rounded-lg max-w-[18em]'>
         <div className='shadow-lg overflow-hidden cursor-pointer'>
           {!movie.poster_path && (

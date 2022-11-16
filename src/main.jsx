@@ -27,8 +27,9 @@ const routes = createBrowserRouter([
         action: listAction,
       },
       {
-        path: '/movie',
+        path: 'movie',
         element: <Movie />,
+        errorElement: <NotFound />,
         loader: movieLoader,
       },
     ],
