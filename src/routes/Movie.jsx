@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 export async function loader({ request, params }) {
-  const { id } = params;
+  const searchUrl = new URL(request.url);
+  const searchParams = searchUrl.searchParams;
+  const id = searchParams.get('id');
+
   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${
     import.meta.env.VITE_TMDB_API
   }`;
@@ -13,7 +16,7 @@ export async function loader({ request, params }) {
 const Movie = () => {
   const movie = useLoaderData();
 
-  console.log(movie);
+  // console.log(movie);
 
   useEffect(() => {
     window.scrollTo(0, 0);
