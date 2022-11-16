@@ -71,7 +71,7 @@ const SideBar = ({ isOpen, handleClose }) => {
         </NavLink>
       </div>
       <nav className='flex flex-col '>
-        <h2 className='text-md font-bold mb-1 ml-2 pl-6 py-3 bg-primary_dark rounded-full -mr-6 shadow-xl'>
+        <h2 className='text-md font-bold mb-1 ml-2 pl-6 py-3 bg-primary_dark rounded-full -mr-6 shadow-lg'>
           Categories
         </h2>
         <div className='space-y-1 px-4 xl:px-6'>
@@ -93,7 +93,7 @@ const SideBar = ({ isOpen, handleClose }) => {
           })}
         </div>
         <div className='mt-2'>
-          <h2 className='text-md font-bold mb-1 ml-2 pl-6 py-3 bg-primary_dark rounded-full -mr-6 shadow-xl'>
+          <h2 className='text-md font-bold mb-1 ml-2 pl-6 py-3 bg-primary_dark rounded-full -mr-6 shadow-lg'>
             Genres
           </h2>
           <div className='space-y-1 px-4 xl:px-6'>
@@ -116,7 +116,7 @@ const SideBar = ({ isOpen, handleClose }) => {
       </nav>
 
       <div className='text-center my-4'>
-        <h2 className='mx-auto p-3 text-accent bg-orange-300 rounded-lg w-max hover:shadow-lg'>
+        <h2 className='mx-auto p-3 text-orange-300 bg-violet-600 rounded-lg w-max hover:shadow-lg'>
           <a href='https://www.themoviedb.org/'>Powered by TMDB</a>
         </h2>
       </div>
