@@ -26,8 +26,8 @@ const Wrapper = ({ children }) => {
       <div className='bg-primary_dark text-primary_light flex gap-5 relative'>
         <div
           className={`${
-            isOpen ? 'translate-x-0' : '-translate-x-[110%]'
-          } absolute lg:translate-x-0 lg:sticky lg:top-0 z-50 transition-all duration-300 ease-out`}
+            isOpen ? 'translate-x-0' : '-translate-x-[110%] absolute bottom-0'
+          }  lg:translate-x-0 lg:sticky lg:top-0 z-50 transition-all duration-300 ease-out`}
         >
           <SideBar handleClose={handleClose} isOpen={isOpen} />
         </div>
