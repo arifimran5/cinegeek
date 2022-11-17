@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useOnClickOutside } from '../hooks/useClickOutside';
 export default function Dropdown({ title, options }) {

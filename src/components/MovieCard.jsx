@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigation } from 'react-router-dom';
 import { IoIosStats } from 'react-icons/io';
 
 const MovieCard = ({ movie }) => {
-  // console.log(movie);
   return (
     <Link to={`/movie?id=${movie.id}&page=1`} key={movie.id} className=''>
       <article className='p-4 bg-gradient-to-b from-orange-200/20 to-accent/30 rounded-lg max-w-[18em]'>

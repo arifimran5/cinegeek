@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import SideBar from './SideBar';
+import { useState } from 'react';
 import { CgMenuLeft } from 'react-icons/cg';
+import SideBar from './SideBar';
 
 const Wrapper = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
