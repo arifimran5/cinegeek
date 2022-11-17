@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Form, useSearchParams } from 'react-router-dom';
+import { Form, useFetcher, useSearchParams } from 'react-router-dom';
 import { redirect } from 'react-router-dom';
 import { useLoaderData } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -29,18 +29,25 @@ export async function action({ request }) {
   // }
 }
 
-export async function loader({ request }) {
+export async function loader({ request, params }) {
   // get url search params from request.url
+  const { genre_id } = params;
   const url = new URL(request.url);
   const searchParams = url.searchParams;
   let page = searchParams.get('page') || 1;
   let category = searchParams.get('category') || 'popular';
 
   const fetchData = async () => {
-    const url = `https://api.themoviedb.org/3/movie/${category}?page=${page}&api_key=${
-      import.meta.env.VITE_TMDB_API
-    }`;
-
+    let url;
+    if (!genre_id) {
+      url = `https://api.themoviedb.org/3/movie/${category}?page=${page}&api_key=${
+        import.meta.env.VITE_TMDB_API
+      }`;
+    } else {
+      url = `https://api.themoviedb.org/3/discover/movie?with_genres=${genre_id}&page=${page}&api_key=${
+        import.meta.env.VITE_TMDB_API
+      }`;
+    }
     const res = await fetch(url);
     return await res.json();
   };
@@ -53,31 +60,49 @@ const List = () => {
   const [searchParams] = useSearchParams();
   let page = searchParams.get('page');
   let category = searchParams.get('category');
+  let genreName = searchParams.get('name');
+
+  const { genre_id } = useParams();
 
   useEffect(() => {
-    if (!category || !page) {
+    if ((!genre_id && !category) || !page) {
       navigate('/?category=popular&page=1');
     }
     window.scrollTo(0, 0);
   }, [searchParams]);
 
   const handleNextPage = () => {
-    navigate(`/?category=${category}&page=${page * 1 + 1}`);
+    if (genre_id) {
+      navigate(
+        `/genre/${genre_id}?name=${genreName}&page=${parseInt(page) + 1}`
+      );
+    } else {
+      navigate(`/?category=${category}&page=${page * 1 + 1}`);
+    }
   };
   const handlePrevPage = () => {
-    navigate(`/?category=${category}&page=${page * 1 - 1}`);
+    if (genre_id) {
+      navigate(
+        `/genre/${genre_id}?name=${genreName}&page=${parseInt(page) - 1}`
+      );
+    } else {
+      navigate(`/?category=${category}&page=${page * 1 - 1}`);
+    }
   };
 
-  if (category === 'now_playing') {
-    category = 'Now Playing';
-  } else if (category === 'top_rated') {
-    category = 'Top Rated';
+  if (!genreName) {
+    if (category === 'now_playing') {
+      category = 'Now Playing';
+    } else if (category === 'top_rated') {
+      category = 'Top Rated';
+    }
   }
 
   return (
     <div>
       <h1 className='capitalize text-2xl sm:text-3xl font-bold my-6 lg:mt-8'>
-        {category} <span className='block font-light text-base'>Movies</span>
+        {genreName ? genreName : category}{' '}
+        <span className='block font-light text-base'>Movies</span>
       </h1>
 
       <MovieList data={data.results} category={category} />

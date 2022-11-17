@@ -32,6 +32,12 @@ const routes = createBrowserRouter([
         errorElement: <NotFound />,
         loader: movieLoader,
       },
+      {
+        path: 'genre/:genre_id',
+        element: <List />,
+        loader: listLoader,
+        action: listAction,
+      },
     ],
   },
 ]);

@@ -27,6 +27,7 @@ const movieOptions = [
 const SideBar = ({ isOpen, handleClose }) => {
   const [searchParams] = useSearchParams();
   let category = searchParams.get('category');
+  let genreName = searchParams.get('name');
 
   const [genres, setGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -99,12 +100,14 @@ const SideBar = ({ isOpen, handleClose }) => {
           <div className='space-y-1 px-4 xl:px-6'>
             {!isLoading &&
               genres.map((genre) => {
+                const active = genre.name === genreName;
                 return (
                   <NavLink
                     onClick={handleClose}
                     key={genre.id}
-                    to={`/genre/${genre.id}?page=1`}
-                    className={`flex items-center gap-2 text-orange-300  py-1 px-6 hover:underline hover:rounded-2xl`}
+                    data-active={active}
+                    to={`/genre/${genre.id}?name=${genre.name}&page=1`}
+                    className={`flex items-center gap-2 text-orange-300  py-1 px-6 hover:underline hover:rounded-2xl data-[active=true]:text-teal-500`}
                   >
                     <BiCaretRightCircle />
                     {genre.name}
