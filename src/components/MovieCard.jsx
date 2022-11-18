@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IoIosStats } from 'react-icons/io';
 
 const MovieCard = ({ movie }) => {
