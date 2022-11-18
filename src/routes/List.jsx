@@ -1,18 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
 import { useEffect } from 'react';
-import {
-  Form,
-  useFetcher,
-  useNavigation,
-  useSearchParams,
-} from 'react-router-dom';
-import { redirect } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useLoaderData } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MovieList from '../components/MovieList';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export async function action({ request }) {}
 
@@ -42,7 +34,6 @@ export async function loader({ request, params }) {
 
 const List = () => {
   const navigate = useNavigate();
-  const navigation = useNavigation();
   const data = useLoaderData();
   const [searchParams] = useSearchParams();
   let page = searchParams.get('page');
@@ -84,59 +75,41 @@ const List = () => {
     }
   }
 
-  const transition = {
-    duration: 0.5,
-    ease: 'easeInOut',
-  };
-  const movieListVariants = {
-    initial: { y: -100, opacity: 0 },
-    enter: { y: 0, opacity: 1, transition },
-    exit: { y: 100, opacity: 0, transition },
-  };
-
   return (
-    <AnimatePresence>
+    <div>
+      <h1 className='capitalize text-2xl sm:text-3xl font-bold my-6 lg:mt-8'>
+        {genreName ? genreName : category}{' '}
+        <span className='block font-light text-base'>Movies</span>
+      </h1>
+
       <div>
-        <h1 className='capitalize text-2xl sm:text-3xl font-bold my-6 lg:mt-8'>
-          {genreName ? genreName : category}{' '}
-          <span className='block font-light text-base'>Movies</span>
-        </h1>
-
-        <motion.div
-          initial='exit'
-          animate='enter'
-          exit='exit'
-          variants={movieListVariants}
-          key={navigation.state}
-        >
-          <MovieList data={data.results} category={category} />
-        </motion.div>
-
-        <div className='flex justify-end items-center space-x-2 sm:space-x-6 pb-4 pt-6 font-semibold '>
-          <button
-            onClick={handlePrevPage}
-            className={`px-5 py-2 bg-gray-100  text-primary_dark rounded-md ${
-              page == 1 ? 'bg-gray-400 cursor-not-allowed' : ''
-            } `}
-            disabled={page == 1}
-          >
-            Prev
-          </button>
-
-          <button
-            onClick={handleNextPage}
-            className={`px-5 py-2 bg-accent text-primary_light rounded-md ${
-              page == 500
-                ? 'bg-gray-400 text-primary_dark cursor-not-allowed'
-                : ''
-            } `}
-            disabled={page == 500}
-          >
-            Next
-          </button>
-        </div>
+        <MovieList data={data.results} category={category} />
       </div>
-    </AnimatePresence>
+
+      <div className='flex justify-end items-center space-x-2 sm:space-x-6 pb-4 pt-6 font-semibold '>
+        <button
+          onClick={handlePrevPage}
+          className={`px-5 py-2 bg-gray-100  text-primary_dark rounded-md ${
+            page == 1 ? 'bg-gray-400 cursor-not-allowed' : ''
+          } `}
+          disabled={page == 1}
+        >
+          Prev
+        </button>
+
+        <button
+          onClick={handleNextPage}
+          className={`px-5 py-2 bg-accent text-primary_light rounded-md ${
+            page == 500
+              ? 'bg-gray-400 text-primary_dark cursor-not-allowed'
+              : ''
+          } `}
+          disabled={page == 500}
+        >
+          Next
+        </button>
+      </div>
+    </div>
   );
 };
 
