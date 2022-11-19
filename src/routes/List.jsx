@@ -54,6 +54,9 @@ const List = () => {
         `/genre/${genre_id}?name=${genreName}&page=${parseInt(page) + 1}`
       );
     } else {
+      if (category == 'Top Rated') {
+        category = 'top_rated';
+      }
       navigate(`/?category=${category}&page=${page * 1 + 1}`);
     }
   };
@@ -63,6 +66,9 @@ const List = () => {
         `/genre/${genre_id}?name=${genreName}&page=${parseInt(page) - 1}`
       );
     } else {
+      if (category == 'Top Rated') {
+        category = 'top_rated';
+      }
       navigate(`/?category=${category}&page=${page * 1 - 1}`);
     }
   };
